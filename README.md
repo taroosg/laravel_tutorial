@@ -996,12 +996,12 @@ class CreateTasksTable extends Migration
 }
 ```
 
-今回はtodo管理アプリケーションを作成するので，以下のカラムを追加する．
-- task: タスク名（必須）
-- deadline: タスクの締切（必須）
-- comment: タスクの詳細（任意）
+- 今回はtodo管理アプリケーションを作成するので，以下のカラムを追加する．
+  - task: タスク名（必須）
+  - deadline: タスクの締切（必須）
+  - comment: タスクの詳細（任意）
 
-`[yyyy]_[mm]_[dd]_[hms]_create_tasks_table.php`に必要なカラム名を追記する．
+- `[yyyy]_[mm]_[dd]_[hms]_create_tasks_table.php`に必要なカラム名を追記する．
 
 ```php
 <?php
@@ -1915,7 +1915,7 @@ public function store(Request $request)
 <form action="{{ route('tasks.edit',$task->id) }}" method="GET">
 ```
 
-ルーティングではコントローラの`edit`関数が実行されるよう記述されているため，`/project01/app/Http/Controllers/TasksController.php`の`edit()`関数を以下のように編集する．
+- ルーティングではコントローラの`edit`関数が実行されるよう記述されているため，`/project01/app/Http/Controllers/TasksController.php`の`edit()`関数を以下のように編集する．
 
 ```php
 public function edit($id)
