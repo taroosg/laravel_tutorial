@@ -2095,7 +2095,7 @@ public function __construct()
 public function up()
 {
   Schema::create('tasks', function (Blueprint $table) {
-    $table->bigIncrements('id');
+    $table->id();
     // user_idカラムを作成するよう追記
     $table->integer('user_id');
     // 以降変更なし
