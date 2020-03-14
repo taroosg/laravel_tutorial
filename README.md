@@ -2,15 +2,15 @@
 
 - 作成日：2019/01/23
 
-- 更新日：2020/03/06
+- 更新日：2020/06/23
 
 - 実行環境：aws cloud9
 
-- 実行OS：ubuntu 18.04
+- 実行OS：ubuntu 18.04 LTS
 
-- PHPバージョン：7.4.3
+- PHPバージョン：7.4.7
 
-- Laravelバージョン：7.0.4
+- Laravelバージョン：7.16.1
 
 
 ## はじめに
@@ -166,7 +166,7 @@ $ curl -sS https://getcomposer.org/installer | php
 All settings correct for using Composer
 Downloading...
 
-Composer (version 1.9.3) successfully installed to: /home/ubuntu/environment/composer.phar
+Composer (version 1.10.7) successfully installed to: /home/ubuntu/environment/composer.phar
 Use it: php composer.phar
 ```
 
@@ -191,7 +191,7 @@ $ composer
 / /___/ /_/ / / / / / / /_/ / /_/ (__  )  __/ /
 \____/\____/_/ /_/ /_/ .___/\____/____/\___/_/
                     /_/
-Composer version 1.9.3 2020-02-04 12:58:49
+Composer version 1.10.7 2020-06-03 10:03:56
 
 Usage:
   command [options] [arguments]
@@ -270,8 +270,8 @@ Creating config file /etc/php/7.4/apache2/php.ini with new version
 libapache2-mod-php7.4: php7.2 module already enabled, not enabling PHP 7.4
 Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
 Processing triggers for libc-bin (2.27-3ubuntu1) ...
-Processing triggers for php7.4-cli (7.4.3-4+ubuntu18.04.1+deb.sury.org+1) ...
-Processing triggers for libapache2-mod-php7.4 (7.4.3-4+ubuntu18.04.1+deb.sury.org+1)
+Processing triggers for php7.4-cli (7.4.7-1+ubuntu18.04.1+deb.sury.org+1) ...
+Processing triggers for libapache2-mod-php7.4 (7.4.7-1+ubuntu18.04.1+deb.sury.org+1) ...
 ```
 
 - 以下を実行
@@ -323,9 +323,9 @@ Do you want to continue? [Y/n]
 
 ```bash
 Creating config file /etc/php/7.4/mods-available/zip.ini with new version
-Processing triggers for libapache2-mod-php7.4 (7.4.3-4+ubuntu18.04.1+deb.sury.org+1) ...
+Processing triggers for libapache2-mod-php7.4 (7.4.7-1+ubuntu18.04.1+deb.sury.org+1) ...
 Processing triggers for libc-bin (2.27-3ubuntu1) ...
-Processing triggers for php7.4-cli (7.4.3-4+ubuntu18.04.1+deb.sury.org+1) ...
+Processing triggers for php7.4-cli (7.4.7-1+ubuntu18.04.1+deb.sury.org+1) ...
 ```
 
 - アップデート後のPHPバージョン確認
@@ -334,13 +334,13 @@ Processing triggers for php7.4-cli (7.4.3-4+ubuntu18.04.1+deb.sury.org+1) ...
 $ php -v
 ```
 
-- 実行結果（バージョンは7.4.3）
+- 実行結果（バージョンは7.4.7）
 
 ```bash
-PHP 7.4.3 (cli) (built: Feb 23 2020 07:24:28) ( NTS )
+PHP 7.4.7 (cli) (built: Jun 12 2020 07:44:05) ( NTS )
 Copyright (c) The PHP Group
 Zend Engine v3.4.0, Copyright (c) Zend Technologies
-    with Zend OPcache v7.4.3, Copyright (c), by Zend Technologies
+    with Zend OPcache v7.4.7, Copyright (c), by Zend Technologies
 ```
 
 - ※ ここまでのコマンド操作でエラーが発生した場合は，「environmentの準備」からやり直すことをオススメ．下手にエラーを解決しようとするより，新しく作り直したほうが早い．
@@ -352,8 +352,8 @@ Zend Engine v3.4.0, Copyright (c) Zend Technologies
 
 ```
 /home/ubuntu/.composer/vender/laravel/installer
-
 ```
+
 - 実際のインストールや必要なコードの配置は「composer」コマンドで実行するため,
 設置場所に留意する必要はない．
 - 「composer」は他に必要なライブラリなども合わせてダウンロードして配置を行う．「composer」を使用しない場合，すべて自分でダウンロードして設置場所の設定も行う必要がある．
@@ -368,13 +368,12 @@ $ sudo composer global require "laravel/installer"
 
 ```bash
 ...
-symfony/console suggests installing symfony/lock
-symfony/console suggests installing psr/log (For using the console logger)
-guzzlehttp/psr7 suggests installing zendframework/zend-httphandlerrunner (Emit PSR-7 responses)
+symfony/polyfill-intl-idn suggests installing ext-intl (For best performance)
 guzzlehttp/guzzle suggests installing psr/log (Required for using the Log middleware)
-guzzlehttp/guzzle suggests installing ext-intl (Required for Internationalized Domain Name (IDN) support)
 Writing lock file
 Generating autoload files
+13 packages you are using are looking for funding.
+Use the `composer fund` command to find out more!
 ```
 
 ### Laravelプロジェクトの作成
@@ -392,13 +391,9 @@ $ composer create-project laravel/laravel project01
 
 ```bash
 ...
-Discovered Package: facade/ignition
-Discovered Package: fideloper/proxy
-Discovered Package: fruitcake/laravel-cors
-Discovered Package: laravel/tinker
-Discovered Package: nesbot/carbon
-Discovered Package: nunomaduro/collision
 Package manifest generated successfully.
+43 packages you are using are looking for funding.
+Use the `composer fund` command to find out more!
 > @php artisan key:generate --ansi
 Application key set successfully.
 ```
@@ -410,10 +405,10 @@ $ cd project01
 $ php artisan --version
 ```
 
-- 実行結果（バージョンは7.0.4）．実行時の最新版がインストールされる．
+- 実行結果（バージョンは7.16.1）．実行時の最新版がインストールされる．
 
 ```bash
-Laravel Framework 7.0.4
+Laravel Framework 7.16.1
 ```
 
 ### 【参考】Laravelのバージョン指定
@@ -426,7 +421,9 @@ Laravel Framework 7.0.4
 $ composer create-project laravel/laravel project01 5.8.* --prefer-dist
 ```
 
-- ただし，laravelでは公式ドキュメントにバージョンアップの項があるが，1つ前のバージョンからしか記述がないので，基本的には最新バージョンのインストールがオススメである．
+- laravelでは公式ドキュメントにバージョンアップの項があるが，1つ前のバージョンからしか記述がない．
+
+- そのため，基本的には最新バージョンのインストールがオススメである．
 
 
 ### Laravelのインストール確認
@@ -444,7 +441,7 @@ $ php artisan serve --port=8080
 - 実行結果
 
 ```bash
-PHP 7.4.3 Development Server (http://127.0.0.1:8080) started
+PHP 7.4.7 Development Server (http://127.0.0.1:8080) started
 ```
 
 - 【重要】サーバーが動いた状態となるが，停止する場合は「`ctrl + c`」で停止できる．
@@ -605,7 +602,13 @@ Swap:          1548         221        1326
 
 ### 1.2 ライブラリのインストール
 
-- ようやくライブラリが準備できる．
+- ようやくライブラリが準備できる．ディレクトリが`project01`でない場合は移動しておく．
+
+```bash
+$ cd project01
+```
+
+- 下記コマンドを実行する．
 
 ```bash
 $ composer require laravel/ui
@@ -615,15 +618,12 @@ $ composer require laravel/ui
 
 ```bash
 ...
-> @php artisan package:discover --ansi
-Discovered Package: facade/ignition
-Discovered Package: fideloper/proxy
-Discovered Package: fruitcake/laravel-cors
-Discovered Package: laravel/tinker
 Discovered Package: laravel/ui
 Discovered Package: nesbot/carbon
 Discovered Package: nunomaduro/collision
 Package manifest generated successfully.
+43 packages you are using are looking for funding.
+Use the `composer fund` command to find out more!
 ```
 
 - 続けて以下を実行．
@@ -650,12 +650,13 @@ $ npm install
 
 ```bash
 ...
-added 1057 packages from 498 contributors and audited 17619 packages in 28.721s
+added 1110 packages from 499 contributors and audited 1113 packages in 23.01s
 
-34 packages are looking for funding
+36 packages are looking for funding
   run `npm fund` for details
 
-found 0 vulnerabilities
+found 1 low severity vulnerability
+  run `npm audit fix` to fix them, or `npm audit` for details
 ```
 
 - ここまででライブラリのインストールは完了．
@@ -674,11 +675,11 @@ $ npm run dev
 ...
 98% after emitting SizeLimitsPlugin
 
- DONE  Compiled successfully in 10228ms                                   10:23:25 AM
+ DONE  Compiled successfully in 8414ms                       2:39:53 AM
 
        Asset      Size   Chunks             Chunk Names
-/css/app.css   177 KiB  /js/app  [emitted]  /js/app
-  /js/app.js  1.06 MiB  /js/app  [emitted]  /js/app
+/css/app.css   178 KiB  /js/app  [emitted]  /js/app
+  /js/app.js  1.07 MiB  /js/app  [emitted]  /js/app
 ```
 
 ### 1.4 swap領域の削除
@@ -861,7 +862,7 @@ Bye
 
 - 下記コマンドでモデルを作成する．「-m」をつけることで対応するマイグレーションファイルも自動的に作成されるのでおすすめ．（マイグレーションはテーブル作成に使用．同時に作成するとテーブル名の設定が自動で行われる）
 
-- コマンド例
+- 【参考】コマンド例
 
 ```bash
 $ php artisan make:model モデル名
@@ -877,7 +878,7 @@ $ php artisan make:model Task -m
 
 ```bash
 Model created successfully.
-Created Migration: 2020_03_05_103021_create_tasks_table
+Created Migration: 2020_06_23_024905_create_tasks_table
 ```
 
 ### 3.3 【参考】モデル確認
@@ -1074,13 +1075,13 @@ $ php artisan migrate
 ```bash
 Migration table created successfully.
 Migrating: 2014_10_12_000000_create_users_table
-Migrated:  2014_10_12_000000_create_users_table (0.12 seconds)
+Migrated:  2014_10_12_000000_create_users_table (0.04 seconds)
 Migrating: 2014_10_12_100000_create_password_resets_table
-Migrated:  2014_10_12_100000_create_password_resets_table (0.13 seconds)
+Migrated:  2014_10_12_100000_create_password_resets_table (0.03 seconds)
 Migrating: 2019_08_19_000000_create_failed_jobs_table
-Migrated:  2019_08_19_000000_create_failed_jobs_table (0.08 seconds)
-Migrating: 2020_03_05_103021_create_tasks_table
-Migrated:  2020_03_05_103021_create_tasks_table (0.08 seconds)
+Migrated:  2019_08_19_000000_create_failed_jobs_table (0.02 seconds)
+Migrating: 2020_06_23_024905_create_tasks_table
+Migrated:  2020_06_23_024905_create_tasks_table (0.02 seconds)
 ```
 
 - うまくいかない場合はマイグレーションファイルの記述内容を見直して以下のコマンドを実行．
@@ -1211,9 +1212,9 @@ Route::get('/user/profile', 'UserController@index')->name('profile');
 $url = route('profile');
 ```
 
-- ルーティングは`/project01/routes/web.php`に記述する．ただし，今回は後述のコマンドで自動的に作成されるため，自身では記述しない．
+- ルーティングは`/project01/routes/web.php`に記述する．ただし，今回は後述のコマンドで自動的に作成されるため，ここでは記述しない．
 
-- 【補足】`web.php`の他に`api.php`も存在するが，こちらはAPI処理に使用する．`web.php`では画面表示を行うためにセキュリティやセッションなどが適用されるが，`api.php`ではそのようなオプションが適用されない．ただし，両者とも設定は変更可能．
+- 【補足】`web.php`の他に`api.php`も存在するが，こちらはAPI処理に使用する．`web.php`では画面表示を行うためにセキュリティやセッションなどが自動的に適用されるが，`api.php`ではそのようなオプションが適用されない．ただし，両者とも設定は変更可能．
 
 ### 4.2 コントローラとは
 
@@ -1265,7 +1266,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 - 追加した1行は下記の処理をまとめたものとなる．それぞれの処理は`web.php`に記載されていないが，上記1行が全てをまとめている．
 
-- 【Point】最初はどの処理が定義されているかがわかりにくいので，都度下記の表を確認することを推奨．それぞれの処理にurl（URI）が定義されており，名前もつけられている（Route Name）．どちらを使用してもOK（後述）．また，「PUT」「PATCH」「DELETE」メソッドはlaravel独自のもの（後述）．
+- 【Point】最初はどの処理が定義されているかがわかりにくいので，都度下記の表を確認することを推奨．それぞれの処理にurl（URI）が定義されており，名前もつけられている（Route Name）．どちらを使用してもOK（後述）．また，「PUT」「PATCH」「DELETE」メソッドはhtmlから直接リクエストできない（後述）．
 
 ```
 +------------+---------------------+----------+----------------+---------------------------+
@@ -1437,12 +1438,12 @@ class TasksController extends Controller
 - 以下の部分を修正する．
 
 ```php
-// 12行目付近
+// 13行目付近
 <!-- Scripts -->
 // <script src="{{ asset('js/app.js') }}" defer></script>
 // 下記のように修正
 <script src="{{ secure_asset('js/app.js') }}" defer></script>
-// 19行目付近
+// 20行目付近
 <!-- Styles -->
 // <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 // 下記のように修正
@@ -1798,7 +1799,7 @@ public function store(Request $request)
   $task->task = $request->task;
   // 下記のように編集
   $task->deadline = $request->deadline;
-  $task->comment = $request->comment;;
+  $task->comment = $request->comment;
   // ここまで編集
   $task->save();
   //「/」ルートにリダイレクト
@@ -1968,8 +1969,6 @@ public function edit($id)
         <button type="submit" class="btn btn-primary">Save</button>
         <a class="btn btn-link pull-right" href="{{ route('tasks.index') }}">Back</a>
       </div>
-      <!-- id値を送信 -->
-      <input type="hidden" name="id" value="{{$task->id}}" />
     </form>
   </div>
 </div>
@@ -2073,7 +2072,7 @@ public function __construct()
 }
 ```
 
-- 追記したらブラウザで表示を確認する．ログインしていない状態で`https://*********.amazonaws.com/home`にアクセスし，ログインページに移動すればOK．
+- 追記したらブラウザで表示を確認する．ログインしていない状態で`https://*********.amazonaws.com/tasks`にアクセスし，ログインページに移動すればOK．
 
 - 【解説1 / `__construct()`】`__construct()`という名前の関数を定義すると，コントローラ内の何れかの関数が実行される場合，該当する関数の前に`__construct()`関数が実行されるようになる．
 
@@ -2095,7 +2094,7 @@ public function __construct()
 public function up()
 {
   Schema::create('tasks', function (Blueprint $table) {
-    $table->bigIncrements('id');
+    $table->id();
     // user_idカラムを作成するよう追記
     $table->integer('user_id');
     // 以降変更なし
@@ -2119,13 +2118,13 @@ $ php artisan migrate:fresh
 Dropped all tables successfully.
 Migration table created successfully.
 Migrating: 2014_10_12_000000_create_users_table
-Migrated:  2014_10_12_000000_create_users_table (0.13 seconds)
+Migrated:  2014_10_12_000000_create_users_table (0.05 seconds)
 Migrating: 2014_10_12_100000_create_password_resets_table
-Migrated:  2014_10_12_100000_create_password_resets_table (0.13 seconds)
+Migrated:  2014_10_12_100000_create_password_resets_table (0.04 seconds)
 Migrating: 2019_08_19_000000_create_failed_jobs_table
-Migrated:  2019_08_19_000000_create_failed_jobs_table (0.08 seconds)
-Migrating: 2020_03_05_103021_create_tasks_table
-Migrated:  2020_03_05_103021_create_tasks_table (0.07 seconds)
+Migrated:  2019_08_19_000000_create_failed_jobs_table (0.02 seconds)
+Migrating: 2020_06_23_024905_create_tasks_table
+Migrated:  2020_06_23_024905_create_tasks_table (0.02 seconds)
 ```
 
 - mysqlにログインし，テーブルの構造を確認する．
@@ -2222,9 +2221,9 @@ public function index()
 {
   // $tasks = Task::orderBy('deadline', 'asc')->get();
   // 下記のように変更
-$tasks = Task::where('user_id',Auth::user()->id)
-        ->orderBy('deadline', 'asc')
-        ->get();
+  $tasks = Task::where('user_id',Auth::user()->id)
+          ->orderBy('deadline', 'asc')
+          ->get();
   // 以降は変更なし
   return view('tasks', [
     'tasks' => $tasks
