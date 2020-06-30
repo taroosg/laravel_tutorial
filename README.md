@@ -1595,7 +1595,7 @@ mysql> exit;
 
 - まず，画面表示を行っているコントローラの関数を修正する．
 
-- `/project01/app/Http/Controllers/TasksController.php`の`store()`関数を以下のように編集する．
+- `/project01/app/Http/Controllers/TasksController.php`の`index()`関数を以下のように編集する．
 
 ```php
 public function index()
